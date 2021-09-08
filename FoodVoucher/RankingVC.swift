@@ -11,7 +11,7 @@ import Firebase
 class RankingVC: UITableViewController {
     
     let db = Firestore.firestore()
-    var stores: [Store] = []
+    //var stores: [Store] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class RankingVC: UITableViewController {
     
     func loadRanking() {
         db.collection("rating").order(by: "rating", descending: true).addSnapshotListener { querysnapshot, error in
-            self.stores = []
+            //self.stores = []
             
             if let e = error {
                 print(e.localizedDescription)

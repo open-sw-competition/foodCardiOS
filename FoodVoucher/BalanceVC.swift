@@ -15,7 +15,21 @@ class BalanceVC: UIViewController, WKUIDelegate {
     var webView: WKWebView!
         
     override func loadView() {
+        var content = ""
+        if let path = Bundle.main.path(forResource: "script", ofType: "js") {
+            do {
+                content = try String(contentsOfFile: path)
+            } catch {
+                print("error")
+            }
+        }
+        
+        // 자바스크립트 웹뷰에서 실행시키기
         let webConfiguration = WKWebViewConfiguration()
+        let userScript = WKUserScript(source: content, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        let contentController = WKUserContentController()
+        contentController.addUserScript(userScript)
+        webConfiguration.userContentController = contentController
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self
         view = webView

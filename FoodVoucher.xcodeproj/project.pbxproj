@@ -9,17 +9,11 @@
 /* Begin PBXBuildFile section */
 		B916907726D683C90081DD1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916907626D683C90081DD1A /* AppDelegate.swift */; };
 		B916907926D683C90081DD1A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916907826D683C90081DD1A /* SceneDelegate.swift */; };
-		B916907B26D683C90081DD1A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916907A26D683C90081DD1A /* ViewController.swift */; };
 		B916907E26D683C90081DD1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B916907C26D683C90081DD1A /* Main.storyboard */; };
 		B916908026D683CA0081DD1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B916907F26D683CA0081DD1A /* Assets.xcassets */; };
 		B916908326D683CA0081DD1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B916908126D683CA0081DD1A /* LaunchScreen.storyboard */; };
-		B916908F26D696A40081DD1A /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916908E26D696A40081DD1A /* HttpClient.swift */; };
-		B916909126D697250081DD1A /* StoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916909026D697250081DD1A /* StoreRepository.swift */; };
-		B923844926D714760007B39E /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B923844826D714760007B39E /* StoreViewModel.swift */; };
-		B923844B26D73D7B0007B39E /* StoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B923844A26D73D7B0007B39E /* StoreData.swift */; };
-		B923844D26D875BC0007B39E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B923844C26D875BC0007B39E /* MapViewController.swift */; };
-		B923845126D8DE1B0007B39E /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B923845026D8DE1B0007B39E /* StoreModel.swift */; };
 		B923845426DC8BEC0007B39E /* seogu.json in Resources */ = {isa = PBXBuildFile; fileRef = B923845326DC8BEC0007B39E /* seogu.json */; };
+		B935A20726E74B0F00529863 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = B935A20626E74B0F00529863 /* script.js */; };
 		B93B172526E4E6BE00C2A9CC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B93B172426E4E6BE00C2A9CC /* GoogleService-Info.plist */; };
 		B93B172726E4E94B00C2A9CC /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B172626E4E94B00C2A9CC /* LoginVC.swift */; };
 		B93B172926E4FEEB00C2A9CC /* BalanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B172826E4FEEB00C2A9CC /* BalanceVC.swift */; };
@@ -27,30 +21,24 @@
 		B93B172D26E50DCE00C2A9CC /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B172C26E50DCE00C2A9CC /* MapVC.swift */; };
 		B93B172F26E5C8B000C2A9CC /* ControlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B172E26E5C8B000C2A9CC /* ControlVC.swift */; };
 		B93B173126E60D7E00C2A9CC /* RankingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B173026E60D7E00C2A9CC /* RankingVC.swift */; };
-		B93B173326E60F1D00C2A9CC /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B173226E60F1D00C2A9CC /* Store.swift */; };
 		B96E4F3926E21A8300B9B5BF /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96E4F3826E21A8300B9B5BF /* SignupVC.swift */; };
-		B9ACDBE526DFB770008DE34D /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ACDBE426DFB770008DE34D /* JSONModel.swift */; };
+		B9ACDBE526DFB770008DE34D /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ACDBE426DFB770008DE34D /* StoreModel.swift */; };
 		FB21DC285C4809513770DF8F /* Pods_FoodVoucher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8648CA3C88B0D663A5DFF94 /* Pods_FoodVoucher.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1BE31A45792F4FFD1429383E /* Pods-FoodVoucher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodVoucher.debug.xcconfig"; path = "Target Support Files/Pods-FoodVoucher/Pods-FoodVoucher.debug.xcconfig"; sourceTree = "<group>"; };
 		B8648CA3C88B0D663A5DFF94 /* Pods_FoodVoucher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodVoucher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B908FDD726E8B02600E442A9 /* seogu.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = seogu.xls; sourceTree = "<group>"; };
 		B916907326D683C90081DD1A /* FoodVoucher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodVoucher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B916907626D683C90081DD1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B916907826D683C90081DD1A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B916907A26D683C90081DD1A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B916907D26D683C90081DD1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B916907F26D683CA0081DD1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B916908226D683CA0081DD1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B916908426D683CA0081DD1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B916908E26D696A40081DD1A /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
-		B916909026D697250081DD1A /* StoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepository.swift; sourceTree = "<group>"; };
-		B923844826D714760007B39E /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
-		B923844A26D73D7B0007B39E /* StoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreData.swift; sourceTree = "<group>"; };
-		B923844C26D875BC0007B39E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		B923845026D8DE1B0007B39E /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		B923845326DC8BEC0007B39E /* seogu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = seogu.json; sourceTree = "<group>"; };
+		B935A20626E74B0F00529863 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
 		B93B172426E4E6BE00C2A9CC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B93B172626E4E94B00C2A9CC /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		B93B172826E4FEEB00C2A9CC /* BalanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceVC.swift; sourceTree = "<group>"; };
@@ -58,9 +46,8 @@
 		B93B172C26E50DCE00C2A9CC /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		B93B172E26E5C8B000C2A9CC /* ControlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlVC.swift; sourceTree = "<group>"; };
 		B93B173026E60D7E00C2A9CC /* RankingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingVC.swift; sourceTree = "<group>"; };
-		B93B173226E60F1D00C2A9CC /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		B96E4F3826E21A8300B9B5BF /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
-		B9ACDBE426DFB770008DE34D /* JSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
+		B9ACDBE426DFB770008DE34D /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		E11013B0D424DD31C3DE59E2 /* Pods-FoodVoucher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodVoucher.release.xcconfig"; path = "Target Support Files/Pods-FoodVoucher/Pods-FoodVoucher.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,17 +103,12 @@
 			children = (
 				B923845226DC8A490007B39E /* JsonData */,
 				B916907626D683C90081DD1A /* AppDelegate.swift */,
-				B923844C26D875BC0007B39E /* MapViewController.swift */,
 				B916907826D683C90081DD1A /* SceneDelegate.swift */,
-				B916907A26D683C90081DD1A /* ViewController.swift */,
-				B923845026D8DE1B0007B39E /* StoreModel.swift */,
-				B923844826D714760007B39E /* StoreViewModel.swift */,
 				B916907C26D683C90081DD1A /* Main.storyboard */,
 				B93B172C26E50DCE00C2A9CC /* MapVC.swift */,
-				B9ACDBE426DFB770008DE34D /* JSONModel.swift */,
+				B9ACDBE426DFB770008DE34D /* StoreModel.swift */,
 				B93B172E26E5C8B000C2A9CC /* ControlVC.swift */,
 				B93B173026E60D7E00C2A9CC /* RankingVC.swift */,
-				B93B173226E60F1D00C2A9CC /* Store.swift */,
 				B93B172826E4FEEB00C2A9CC /* BalanceVC.swift */,
 				B93B172A26E50BC600C2A9CC /* SettingVC.swift */,
 				B93B172626E4E94B00C2A9CC /* LoginVC.swift */,
@@ -134,10 +116,8 @@
 				B916907F26D683CA0081DD1A /* Assets.xcassets */,
 				B916908126D683CA0081DD1A /* LaunchScreen.storyboard */,
 				B916908426D683CA0081DD1A /* Info.plist */,
-				B923844A26D73D7B0007B39E /* StoreData.swift */,
-				B916908E26D696A40081DD1A /* HttpClient.swift */,
-				B916909026D697250081DD1A /* StoreRepository.swift */,
 				B93B172426E4E6BE00C2A9CC /* GoogleService-Info.plist */,
+				B935A20626E74B0F00529863 /* script.js */,
 			);
 			path = FoodVoucher;
 			sourceTree = "<group>";
@@ -146,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				B923845326DC8BEC0007B39E /* seogu.json */,
+				B908FDD726E8B02600E442A9 /* seogu.xls */,
 			);
 			path = JsonData;
 			sourceTree = "<group>";
@@ -211,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B916908326D683CA0081DD1A /* LaunchScreen.storyboard in Resources */,
+				B935A20726E74B0F00529863 /* script.js in Resources */,
 				B923845426DC8BEC0007B39E /* seogu.json in Resources */,
 				B93B172526E4E6BE00C2A9CC /* GoogleService-Info.plist in Resources */,
 				B916908026D683CA0081DD1A /* Assets.xcassets in Resources */,
@@ -287,21 +269,13 @@
 				B93B172926E4FEEB00C2A9CC /* BalanceVC.swift in Sources */,
 				B93B172B26E50BC600C2A9CC /* SettingVC.swift in Sources */,
 				B93B172726E4E94B00C2A9CC /* LoginVC.swift in Sources */,
-				B93B173326E60F1D00C2A9CC /* Store.swift in Sources */,
-				B923844926D714760007B39E /* StoreViewModel.swift in Sources */,
-				B916907B26D683C90081DD1A /* ViewController.swift in Sources */,
 				B96E4F3926E21A8300B9B5BF /* SignupVC.swift in Sources */,
 				B93B172F26E5C8B000C2A9CC /* ControlVC.swift in Sources */,
 				B916907726D683C90081DD1A /* AppDelegate.swift in Sources */,
 				B916907926D683C90081DD1A /* SceneDelegate.swift in Sources */,
 				B93B173126E60D7E00C2A9CC /* RankingVC.swift in Sources */,
-				B916908F26D696A40081DD1A /* HttpClient.swift in Sources */,
-				B9ACDBE526DFB770008DE34D /* JSONModel.swift in Sources */,
+				B9ACDBE526DFB770008DE34D /* StoreModel.swift in Sources */,
 				B93B172D26E50DCE00C2A9CC /* MapVC.swift in Sources */,
-				B916909126D697250081DD1A /* StoreRepository.swift in Sources */,
-				B923844B26D73D7B0007B39E /* StoreData.swift in Sources */,
-				B923844D26D875BC0007B39E /* MapViewController.swift in Sources */,
-				B923845126D8DE1B0007B39E /* StoreModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
