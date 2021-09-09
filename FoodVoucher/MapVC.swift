@@ -19,16 +19,23 @@ class MapVC: UIViewController {
     let locationManager = CLLocationManager()
     var results: [StoreItem]? = []
     //var stores: [Item] = []    // 파이어베이스 결과(별점)
-    var ref: DatabaseReference!
+    lazy var ref: DatabaseReference = Database.database().reference()
+    var ratingsRef: DatabaseReference!
     
     let db = Firestore.firestore()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        ratingsRef.observe(DataEventType.value) { snapshot in
+            //self.makeMarker() 와 이렇게 만들면 숫자가 제대로 안들어가는데?
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager.delegate = self
-        
-        ref = Database.database().reference()
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestLocation()
@@ -55,14 +62,13 @@ class MapVC: UIViewController {
         mapView.isHidden = true
         
         defaultmapView.delegate = self
-        
+
         // json 파일에서 데이터 가져오고 마커 생성하기
         if readFile() {
             makeMarker()
         }
         
-        //updateRanking()
-        
+        ratingsRef = ref.child("ratings")
     }
     
     func readFile() -> Bool {
@@ -92,48 +98,7 @@ class MapVC: UIViewController {
             return false
         }
     }
-    
-    // 리스너
-//    func updateRanking() {
-//        db.collection("rating").addSnapshotListener { querysnapshot, error in
-//            self.stores = []
-//
-//            if let e = error {
-//                print(e.localizedDescription)
-//            } else {
-//                if let snapShotDocuments = querysnapshot?.documents {
-//                    for doc in snapShotDocuments {
-//                        let data = doc.data()
-//
-//                        if let rating = data["rating"] as? Int {
-//                            //print(rating)
-//                            //print("점수")
-//                        }
-//
-//                    }
-//                }
-//            }
-//        }
-//        //print(#function)
-//    }
-    
-//    func makeMarker(_ stores: [Item]) {
-//        // 마커 만들기
-//        if let numOfStore = result?.data.count {
-//            for item in 0..<numOfStore {
-//                guard let store = result?.data[item] else {
-//                    return
-//                }
-//                let marker = GMSMarker()
-//                marker.position = CLLocationCoordinate2D(latitude: Double(store.latitude)!, longitude: Double(store.longitude)!)
-//                marker.title = store.mrhstNm
-//                marker.snippet = "\(store.phoneNumber)\n⭐️:\(store.rating)/5 (명)"
-//                marker.map = defaultmapView
-//            }
-//        }
-//        //print(#function)
-//        //print("안오지?")
-//    }
+
     
     func makeMarker() {
         if let numOfStore = results?.count {
@@ -144,12 +109,38 @@ class MapVC: UIViewController {
                 let marker = GMSMarker()
                 marker.position = CLLocationCoordinate2D(latitude: Double(store.latitude)!, longitude: Double(store.longitude)!)
                 marker.title = store.mrhstNm
-                marker.snippet = "\(store.phoneNumber)\n⭐️:/5 (명)"
+                
+                // 이름이 mrhstNm인 총투표자수와 총점가져오기
+                var ratingContributor: String = ""
+                
+                ref.child("ratings").child(store.mrhstNm).observe(.value) { snapshot in
+                    if let dict = snapshot.value as? [String: AnyObject] {
+                        
+                        let rating = dict["rating"] as? Float ?? 0
+                        let contributor = dict["contributor"] as? Int ?? 0
+                        ratingContributor += String(rating) + "," + String(contributor)
+                        
+                        if ratingContributor == "" {
+                            marker.snippet = "\(store.phoneNumber)\n⭐️:0.0/5 (0명)"
+                        } else {
+                            if ratingContributor == "," {
+                                marker.snippet = "\(store.phoneNumber)\n⭐️:0.0/5 (0명)"
+                            } else {
+                                let rcArray = ratingContributor.components(separatedBy: ",")
+                                let rating = rcArray[0]
+                                let contributor = rcArray[1]
+                                marker.snippet = "\(store.phoneNumber)\n⭐️:\(rating)/5 (\(contributor)명)"
+                            }
+                            
+                        }
+                    }
+                    
+                }
+                
                 marker.map = defaultmapView
             }
         }
     }
-    
 
 }
 
@@ -164,20 +155,37 @@ extension MapVC: GMSMapViewDelegate {
         let alert = UIAlertController(title: nil, message: "별점을 입력해주세요", preferredStyle: .alert)
         alert.setValue(contentVC, forKey: "contentViewController")
         
+        let mrhstNm = (marker.title ?? "") as String
+        let latitude = marker.position.latitude
+        let longitude = marker.position.longitude
+        let snippet = (marker.snippet ?? "") as String
+        
+        let array = snippet.split(separator: "\n")
+        let phoneNumber = array[0]
+        
+        let ratingContributor = array[1].split(separator: " ")
+        let ratingArray = ratingContributor[0].split(separator: ":")
+        let rating = Float(ratingArray[1].split(separator: "/")[0])!
+
+        let contributorString = ratingContributor[1].split(separator: "명")[0]
+        let startInx = contributorString.index(contributorString.startIndex, offsetBy: 1)
+        let contributor = Int(contributorString[startInx...])!
+        
         // 가게명 위도 경도 점수 총사람수 평점 전화번호 주소
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            let rating = contentVC.sliderValue
-            let latitude = marker.position.latitude
-            let longitude = marker.position.longitude
-            let snippet = marker.snippet
-            let mrhstNm = (marker.title ?? "") as String
+
+            let ratingValue = contentVC.sliderValue
+            let changedContributor = contributor + 1
+            let changedRating = ((rating*Float(contributor))+ratingValue) / Float(changedContributor)
+            let changedSnippet = "\(phoneNumber)\n⭐️:\(changedRating)/5 (\(changedContributor)명)"
             
             if let user = Auth.auth().currentUser?.email {
-                self.ref.child("ratings").child(mrhstNm).setValue(["rating":rating, "latitude":latitude, "longitude":longitude, "snippet":snippet, "mrhstNm":mrhstNm])
+                self.ref.child("ratings").child(mrhstNm).setValue(["rating":changedRating, "latitude":latitude, "longitude":longitude, "snippet":changedSnippet, "mrhstNm":mrhstNm, "contributor":changedContributor])
                 let alert = UIAlertController(title: nil, message: "별점을 매겼습니다", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: false)
             }
+            
         }
         alert.addAction(okAction)
         present(alert, animated: false)
